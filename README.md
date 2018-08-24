@@ -1,2 +1,55 @@
-# docker-jboss-eap
-JBoss EAP Docker
+# JBoss EAP Docker #
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/scalified/jboss-eap.svg)](https://hub.docker.com/r/scalified/jboss-eap)
+[![](https://images.microbadger.com/badges/image/scalified/jboss-eap.svg)](https://microbadger.com/images/scalified/jboss-eap)
+[![](https://images.microbadger.com/badges/version/scalified/jboss-eap.svg)](https://microbadger.com/images/scalified/jboss-eap)
+
+## Description
+
+This repository is used for building a [**Docker**](https://www.docker.com) image containing [**JBOSS EAP**](https://developers.redhat.com/products/eap/overview)
+
+## Dockerhub
+
+**`docker pull scalified/jboss-eap:<version>`**
+
+## Version
+
+| Version                | JBoss EAP |
+|------------------------|-----------|
+| **7.1.0**, **latest**  | 7.1.0     |
+| **7.0.0**              | 7.0.0     |
+| **6.4.0**              | 6.4.0     |
+
+## Volumes
+
+* **`/opt/jboss/standalong`**
+
+* **`/root/.ssh`**
+
+## Additional JBoss EAP Content
+
+* Fixed JBoss logmanager syslog handler not sending null or empty messages
+* Oracle JDBC 8 driver
+
+### How-To
+
+#### Building Docker Image
+
+1. Download [**Official JBOSS EAP**](https://developers.redhat.com/products/eap/download/) archive (You must have a registered [**RedHat Developers Account**](https://developers.redhat.com))
+2. Issue the command:
+   **`docker build . -t <tag> --build-arg JBOSS_ARCHIVE_NAME=<downloaded archive name>`**
+
+#### Running Docker Image
+
+* Pulling from **Dockerhub**:  
+  `docker run -it scalified/jboss-eap:<version> /bin/sh`
+
+* Launching the built image with <tag> tag:  
+  `docker run -it <tag> /bin/sh`
+
+## Scalified Links
+
+* [Scalified](http://www.scalified.com)
+* [Scalified Official Facebook Page](https://www.facebook.com/scalified)
+* <a href="mailto:info@scalified.com?subject=[JBoss EAP Docker Image]: Proposals And Suggestions">Scalified Support</a>
+
