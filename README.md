@@ -22,7 +22,7 @@ This repository is used for building a [**Docker**](https://www.docker.com) imag
 
 ## Volumes
 
-* **`/opt/jboss/standalong`**
+* **`/opt/jboss/standalone`**
 
 * **`/root/.ssh`**
 
