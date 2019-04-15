@@ -1,0 +1,47 @@
+FROM azul/zulu-openjdk:8u192-8.33.0.1
+
+MAINTAINER Vladyslav Baidak
+
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
+RUN apt-get update
+
+RUN apt-get install -y curl \
+        locales
+
+RUN sed -i -e "s/# $LANG/$LANG/" /etc/locale.gen \
+        && locale-gen $LANG.UTF-8 \
+        && dpkg-reconfigure --frontend=noninteractive locales \
+        && update-locale LANG=$LANG
+
+ARG JBOSS_ARCHIVE_NAME
+
+ENV JBOSS_HOME=/opt/jboss
+
+ENV SSH_DIR=/root/.ssh
+
+RUN apt-get install unzip
+
+RUN mkdir -p $JBOSS_HOME
+
+RUN mkdir -p $SSH_DIR
+
+COPY $JBOSS_ARCHIVE_NAME $JBOSS_HOME
+
+RUN JBOSS_TMP_DIR=$JBOSS_HOME/tmp \
+	&& unzip -d $JBOSS_TMP_DIR $JBOSS_HOME/$JBOSS_ARCHIVE_NAME \
+	&& rm $JBOSS_HOME/$JBOSS_ARCHIVE_NAME \
+	&& mv $JBOSS_TMP_DIR/*/* $JBOSS_HOME \
+	&& rm -rf $JBOSS_TMP_DIR
+
+COPY modules $JBOSS_HOME/modules
+
+VOLUME $JBOSS_HOME/standalone
+
+VOLUME $SSH_DIR
+
+ENTRYPOINT $JBOSS_HOME/bin/standalone.sh
+
+EXPOSE 80 443 8080 8443 9990 9993
