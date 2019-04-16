@@ -16,8 +16,8 @@ This repository is used for building a [**Docker**](https://www.docker.com) imag
 
 | Version                 | JBoss EAP |
 |-------------------------|-----------|
-| **zulu-openjdk**        | 7.1.0     |
 | **7.1.0**, **latest**   | 7.1.0     |
+| **7.1.0-zulu-openjdk**  | 7.1.0     |
 | **7.0.0**               | 7.0.0     |
 | **6.4.0**               | 6.4.0     |
 
