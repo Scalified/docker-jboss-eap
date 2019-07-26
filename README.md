@@ -30,6 +30,7 @@ This repository is used for building a [**Docker**](https://www.docker.com) imag
 ## Additional JBoss EAP Content
 
 * Fixed JBoss logmanager syslog handler not sending null or empty messages
+* Oracle JDBC v8 driver
 
 ### How-To
 

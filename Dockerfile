@@ -8,7 +8,8 @@ ENV JBOSS_HOME=/opt/jboss
 
 ENV SSH_DIR=/root/.ssh
 
-RUN apt-get install unzip
+RUN apt-get update \
+  && apt-get install unzip
 
 RUN mkdir -p $JBOSS_HOME
 
