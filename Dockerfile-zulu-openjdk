@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk:8u192-8.33.0.1
+FROM azul/zulu-openjdk:11
 
 MAINTAINER Vladyslav Baidak
 

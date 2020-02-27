@@ -14,12 +14,14 @@ This repository is used for building a [**Docker**](https://www.docker.com) imag
 
 ## Version
 
-| Version                 | JBoss EAP |
-|-------------------------|-----------|
-| **7.1.0**, **latest**   | 7.1.0     |
-| **7.1.0-zulu-openjdk**  | 7.1.0     |
-| **7.0.0**               | 7.0.0     |
-| **6.4.0**               | 6.4.0     |
+| Version                 | JDK | JBoss EAP |
+|-------------------------|-----|-----------|
+| **7.2.0**, **latest**   | 11  | 7.2.0     |
+| **7.2.0-zulu-openjdk**  | 11  | 7.2.0     |
+| **7.1.0**               | 1.8 | 7.1.0     |
+| **7.1.0-zulu-openjdk**  | 1.8 | 7.1.0     |
+| **7.0.0**               | 1.8 | 7.0.0     |
+| **6.4.0**               | 1.8 | 6.4.0     |
 
 ## Volumes
 
@@ -29,7 +31,6 @@ This repository is used for building a [**Docker**](https://www.docker.com) imag
 
 ## Additional JBoss EAP Content
 
-* Fixed JBoss logmanager syslog handler not sending null or empty messages
 * Oracle JDBC v8 driver
 
 ### How-To

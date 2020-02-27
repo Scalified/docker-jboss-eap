@@ -1,4 +1,4 @@
-FROM scalified/debian-oraclejdk:latest
+FROM openjdk:11-jdk-buster
 
 MAINTAINER Vladyslav Baidak
 
