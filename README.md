@@ -16,6 +16,8 @@ This repository is used for building a [**Docker**](https://www.docker.com) imag
 
 | Version                 | JDK | JBoss EAP |
 |-------------------------|-----|-----------|
+| **7.4.0**, **latest**   | 11  | 7.4.0     |
+| **7.4.0-zulu-openjdk**  | 11  | 7.4.0     |
 | **7.3.0**, **latest**   | 11  | 7.3.0     |
 | **7.3.0-zulu-openjdk**  | 11  | 7.3.0     |
 | **7.2.0**               | 11  | 7.2.0     |
@@ -28,8 +30,6 @@ This repository is used for building a [**Docker**](https://www.docker.com) imag
 ## Volumes
 
 * **`/opt/jboss/standalone`**
-
-* **`/root/.ssh`**
 
 ## Additional JBoss EAP Content
 
@@ -46,10 +46,10 @@ This repository is used for building a [**Docker**](https://www.docker.com) imag
 #### Running Docker Image
 
 * Pulling from **Dockerhub**:  
-  `docker run -it scalified/jboss-eap:<version> /bin/sh`
+  `docker run scalified/jboss-eap:<version>`
 
 * Launching the built image with <tag> tag:  
-  `docker run -it <tag> /bin/sh`
+  `docker run <tag>`
 
 ## Scalified Links
 

@@ -20,13 +20,9 @@ ARG JBOSS_ARCHIVE_NAME
 
 ENV JBOSS_HOME=/opt/jboss
 
-ENV SSH_DIR=/root/.ssh
-
 RUN apt-get install unzip
 
 RUN mkdir -p $JBOSS_HOME
-
-RUN mkdir -p $SSH_DIR
 
 COPY $JBOSS_ARCHIVE_NAME $JBOSS_HOME
 
@@ -40,8 +36,7 @@ COPY modules $JBOSS_HOME/modules
 
 VOLUME $JBOSS_HOME/standalone
 
-VOLUME $SSH_DIR
-
 ENTRYPOINT $JBOSS_HOME/bin/standalone.sh
 
 EXPOSE 80 443 8080 8443 9990 9993
+

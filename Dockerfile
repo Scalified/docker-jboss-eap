@@ -6,8 +6,6 @@ ARG JBOSS_ARCHIVE_NAME
 
 ENV JBOSS_HOME=/opt/jboss
 
-ENV SSH_DIR=/root/.ssh
-
 RUN apt-get update \
   && apt-get install unzip
 
@@ -28,8 +26,4 @@ VOLUME $JBOSS_HOME/standalone
 EXPOSE 80 443 8080 8443 9990 9993
 
 ENTRYPOINT $JBOSS_HOME/bin/standalone.sh
-
-RUN mkdir -p $SSH_DIR
-
-VOLUME $SSH_DIR
 
