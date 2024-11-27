@@ -6,49 +6,52 @@
 
 ## Description
 
-This repository is used for building a [**Docker**](https://www.docker.com) image containing [**JBOSS EAP**](https://developers.redhat.com/products/eap/overview)
+Docker image and build instructions for the [**JBoss EAP**](https://developers.redhat.com/products/eap/overview)
 
 ## Dockerhub
 
-**`docker pull scalified/jboss-eap:<version>`**
+`docker pull scalified/jboss-eap:<version>`
 
-## Version
+## Versions
 
-| Version                 | JDK | JBoss EAP |
-|-------------------------|-----|-----------|
-| **7.4.0**, **latest**   | 11  | 7.4.0     |
-| **7.4.0-zulu-openjdk**  | 11  | 7.4.0     |
-| **7.3.0**, **latest**   | 11  | 7.3.0     |
-| **7.3.0-zulu-openjdk**  | 11  | 7.3.0     |
-| **7.2.0**               | 11  | 7.2.0     |
-| **7.2.0-zulu-openjdk**  | 11  | 7.2.0     |
-| **7.1.0**               | 1.8 | 7.1.0     |
-| **7.1.0-zulu-openjdk**  | 1.8 | 7.1.0     |
-| **7.0.0**               | 1.8 | 7.0.0     |
-| **6.4.0**               | 1.8 | 6.4.0     |
+| Docker Image Tag                          | JDK Version           | JBoss EAP Version |
+|-------------------------------------------|-----------------------|-------------------|
+| `7.4.18`, `7.4`, `latest`                 | OpenJDK 11            | 7.4.18            |
+| `7.4.18-zulu-openjdk`, `7.4-zulu-openjdk` | Azul Zulu OpenJDK 11  | 7.4.18            |
+| `7.4.0`                                   | OpenJDK 11            | 7.4.0             |
+| `7.4.0-zulu-openjdk`                      | Azul Zulu OpenJDK 11  | 7.4.0             |
+| `7.3.0`                                   | OpenJDK 11            | 7.3.0             |
+| `7.3.0-zulu-openjdk`                      | Azul Zulu OpenJDK 11  | 7.3.0             |
+| `7.2.0`                                   | OpenJDK 11            | 7.2.0             |
+| `7.2.0-zulu-openjdk`                      | Azul Zulu OpenJDK 11  | 7.2.0             |
+| `7.1.0`                                   | OpenJDK 1.8           | 7.1.0             |
+| `7.1.0-zulu-openjdk`                      | Azul Zulu OpenJDK 1.8 | 7.1.0             |
+| `7.0.0`                                   | OpenJDK 1.8           | 7.0.0             |
+| `6.4.0`                                   | OpenJDK 1.8           | 6.4.0             |
 
 ## Volumes
 
-* **`/opt/jboss/standalone`**
-
-## Additional JBoss EAP Content
-
-* Oracle JDBC v8 driver
+* `/opt/jboss/standalone`
 
 ### How-To
 
 #### Building Docker Image
 
-1. Download [**Official JBOSS EAP**](https://developers.redhat.com/products/eap/download/) archive (You must have a registered [**RedHat Developers Account**](https://developers.redhat.com))
-2. Issue the command:
-   **`docker build . -t <tag> --build-arg JBOSS_ARCHIVE_NAME=<downloaded archive name>`**
+1. Download [**Official JBoss EAP**](https://developers.redhat.com/products/eap/download/) zip archive (You must have a registered [**RedHat Developers Account**](https://developers.redhat.com)) into `jboss` directory
+2. Optional: put additional JBoss modules into `modules` directory
+3. Build the image:
+   ```bash
+   docker build . -t <tag> \
+     --build-arg JBOSS_ARCHIVE=jboss/jboss-eap-7.4.0.zip \ # JBoss zip archive path
+     --build-arg BASE_IMAGE=azul/zulu-openjdk:11 # base Docker image with JDK (Optional)
+     ```
 
 #### Running Docker Image
 
-* Pulling from **Dockerhub**:  
+* Pulling from **Dockerhub**:
   `docker run scalified/jboss-eap:<version>`
 
-* Launching the built image with <tag> tag:  
+* Launching the built image with <tag> tag:
   `docker run <tag>`
 
 ## Scalified Links
