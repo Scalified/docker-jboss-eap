@@ -29,9 +29,18 @@ Docker image and build instructions for the [**JBoss EAP**](https://developers.r
 | `7.0.0`                                   | OpenJDK 1.8           | 7.0.0             |
 | `6.4.0`                                   | OpenJDK 1.8           | 6.4.0             |
 
+## Environment
+
+`JBOSS_HOME=/opt/jboss`
+
 ## Volumes
 
-* `/opt/jboss/standalone`
+* `$JBOSS_HOME/standalone`
+
+## Configuration
+
+Configuration files in the `$JBOSS_HOME/standalone/configuration` directory can be overridden by mounting corresponding files into the `/etc/jboss/configs` directory. 
+Alternatively, the entire configuration directory can be overridden by mounting it as a whole
 
 ### How-To
 
@@ -41,9 +50,9 @@ Docker image and build instructions for the [**JBoss EAP**](https://developers.r
 2. Optional: put additional JBoss modules into `modules` directory
 3. Build the image:
    ```bash
-   docker build . -t <tag> \
-     --build-arg JBOSS_ARCHIVE=jboss/jboss-eap-7.4.0.zip \ # JBoss zip archive path
-     --build-arg BASE_IMAGE=azul/zulu-openjdk:11 # base Docker image with JDK (Optional)
+   docker build . -t scalified/jboss-eap:<tag> \
+       --build-arg JBOSS_ARCHIVE=jboss/jboss-eap-7.4.0.zip \ # JBoss zip archive path
+       --build-arg BASE_IMAGE=azul/zulu-openjdk:11 # base Docker image with JDK (Optional)
      ```
 
 #### Running Docker Image

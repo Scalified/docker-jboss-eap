@@ -35,5 +35,6 @@ VOLUME $JBOSS_HOME/standalone
 
 EXPOSE 80 443 8080 8443 9990 9993
 
-ENTRYPOINT $JBOSS_HOME/bin/standalone.sh
+COPY entrypoint.sh /
+ENTRYPOINT /entrypoint.sh
 
