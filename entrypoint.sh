@@ -11,5 +11,5 @@ for config in "$JBOSS_CONFIGS_DIR"/*; do
     fi
 done
 
-$JBOSS_HOME/bin/standalone.sh
+$JBOSS_HOME/bin/standalone.sh -Djboss.tx.node.id=$(hostname)
 

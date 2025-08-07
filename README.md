@@ -1,14 +1,13 @@
-# JBoss EAP Docker #
+# JBoss EAP Docker Image
 
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Scalified/helm-jboss/blob/master/LICENSE)
 [![Docker Pulls](https://img.shields.io/docker/pulls/scalified/jboss-eap.svg)](https://hub.docker.com/r/scalified/jboss-eap)
-[![](https://images.microbadger.com/badges/image/scalified/jboss-eap.svg)](https://microbadger.com/images/scalified/jboss-eap)
-[![](https://images.microbadger.com/badges/version/scalified/jboss-eap.svg)](https://microbadger.com/images/scalified/jboss-eap)
 
-## Description
+## Overview
 
-Docker image and build instructions for the [**JBoss EAP**](https://developers.redhat.com/products/eap/overview)
+Docker image and build instructions for [**JBoss EAP**](https://developers.redhat.com/products/eap/overview)
 
-## Dockerhub
+## Docker Hub
 
 `docker pull scalified/jboss-eap:<version>`
 
@@ -31,7 +30,7 @@ Docker image and build instructions for the [**JBoss EAP**](https://developers.r
 
 ## Environment
 
-`JBOSS_HOME=/opt/jboss`
+* `JBOSS_HOME=/opt/jboss`
 
 ## Volumes
 
@@ -39,33 +38,22 @@ Docker image and build instructions for the [**JBoss EAP**](https://developers.r
 
 ## Configuration
 
-Configuration files in the `$JBOSS_HOME/standalone/configuration` directory can be overridden by mounting corresponding files into the `/etc/jboss/configs` directory. 
+Configuration files in the `$JBOSS_HOME/standalone/configuration` directory can be overridden by mounting corresponding files into the `/etc/jboss/configs` directory.
 Alternatively, the entire configuration directory can be overridden by mounting it as a whole
 
-### How-To
+### Build
 
-#### Building Docker Image
-
-1. Download [**Official JBoss EAP**](https://developers.redhat.com/products/eap/download/) zip archive (You must have a registered [**RedHat Developers Account**](https://developers.redhat.com)) into `jboss` directory
-2. Optional: put additional JBoss modules into `modules` directory
-3. Build the image:
+1. Download the official [**JBoss EAP**](https://developers.redhat.com/products/eap/download/) ZIP archive into the `jboss` directory.
+    *(Requires a registered [RedHat Developers Account](https://developers.redhat.com))*
+2. *(Optional)* Place custom JBoss modules inside the `modules` directory
+3. Run the build command:
    ```bash
    docker build . -t scalified/jboss-eap:<tag> \
-       --build-arg JBOSS_ARCHIVE=jboss/jboss-eap-7.4.0.zip \ # JBoss zip archive path
-       --build-arg BASE_IMAGE=azul/zulu-openjdk:11 # base Docker image with JDK (Optional)
+       --build-arg JBOSS_ARCHIVE=jboss/jboss-eap-7.4.0.zip \ # Path to the downloaded JBoss EAP archive
+       --build-arg BASE_IMAGE=azul/zulu-openjdk-debian:11 # (Optional) Base Docker image containing the desired JDK
      ```
 
-#### Running Docker Image
+---
 
-* Pulling from **Dockerhub**:
-  `docker run scalified/jboss-eap:<version>`
-
-* Launching the built image with <tag> tag:
-  `docker run <tag>`
-
-## Scalified Links
-
-* [Scalified](http://www.scalified.com)
-* [Scalified Official Facebook Page](https://www.facebook.com/scalified)
-* <a href="mailto:info@scalified.com?subject=[JBoss EAP Docker Image]: Proposals And Suggestions">Scalified Support</a>
+**Made with ❤️ by [Scalified](http://www.scalified.com)**
 

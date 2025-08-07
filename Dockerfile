@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=openjdk:11-jdk-buster
+ARG BASE_IMAGE=openjdk:11
 FROM ${BASE_IMAGE}
 
 ARG JBOSS_ARCHIVE
@@ -11,8 +11,13 @@ ENV LC_ALL en_US.UTF-8
 
 ENV JBOSS_HOME=/opt/jboss
 
-RUN apt update \
-    && apt install -y curl locales unzip
+RUN apt update && \
+    apt install -y --no-install-recommends \
+        curl \
+        locales \
+        unzip && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN sed -i -e "s/# $LANG/$LANG/" /etc/locale.gen \
     && locale-gen $LANG.UTF-8 \
@@ -29,7 +34,7 @@ RUN JBOSS_TMP_DIR=$JBOSS_HOME/tmp \
     && mv $JBOSS_TMP_DIR/*/* $JBOSS_HOME \
     && rm -rf $JBOSS_TMP_DIR
 
-COPY modules $JBOSS_HOME/modules
+COPY modules/ $JBOSS_HOME/modules/
 
 VOLUME $JBOSS_HOME/standalone
 
