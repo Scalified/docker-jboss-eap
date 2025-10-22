@@ -49,8 +49,8 @@ Alternatively, the entire configuration directory can be overridden by mounting 
 3. Run the build command:
    ```bash
    docker build . -t scalified/jboss-eap:<tag> \
-       --build-arg JBOSS_ARCHIVE=jboss/jboss-eap-7.4.0.zip \ # Path to the downloaded JBoss EAP archive
-       --build-arg BASE_IMAGE=azul/zulu-openjdk-debian:11 # (Optional) Base Docker image containing the desired JDK
+       --build-arg JBOSS_ARCHIVE=jboss/jboss-eap-7.4.0.zip \
+       --build-arg BASE_IMAGE=azul/zulu-openjdk-debian:11
      ```
 
 ---

@@ -34,12 +34,11 @@ RUN JBOSS_TMP_DIR=$JBOSS_HOME/tmp \
     && mv $JBOSS_TMP_DIR/*/* $JBOSS_HOME \
     && rm -rf $JBOSS_TMP_DIR
 
-COPY modules/ $JBOSS_HOME/modules/
+COPY rootfs /
 
 VOLUME $JBOSS_HOME/standalone
 
 EXPOSE 80 443 8080 8443 9990 9993
 
-COPY entrypoint.sh /
-ENTRYPOINT /entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint"]
 
